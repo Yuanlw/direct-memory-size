@@ -96,13 +96,13 @@ public class DirectMemorySize extends Tool {
     public static long getStaticLongFieldValue(String className, String fieldName) {
         InstanceKlass klass = SystemDictionaryHelper.findInstanceKlass(className);
         LongField field = (LongField) klass.findField(fieldName, "J");
-        return field.getValue(klass); // on JDK7 use: field.getValue(klass.getJavaMirror());
+        return field.getValue(klass.getJavaMirror()); // on JDK6 use: field.getValue(klass);
     }
 
     public static int getStaticIntFieldValue(String className, String fieldName) {
         InstanceKlass klass = SystemDictionaryHelper.findInstanceKlass(className);
         IntField field = (IntField) klass.findField(fieldName, "I");
-        return field.getValue(klass); // on JDK7 use: field.getValue(klass.getJavaMirror());
+        return field.getValue(klass.getJavaMirror()); // on JDK6 use: field.getValue(klass);
     }
     
     public static double toM(long value) {
