@@ -25,6 +25,5 @@ Thumbs.db
 Desktop.ini
 
 # Maven
-target/
 output/
 logs/

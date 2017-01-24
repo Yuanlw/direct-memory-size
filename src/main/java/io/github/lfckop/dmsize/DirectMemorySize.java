@@ -14,8 +14,17 @@ import sun.jvm.hotspot.tools.Tool;
 import sun.jvm.hotspot.utilities.SystemDictionaryHelper;
 
 /**
+ * 计算一个Java进程的DirectMemory所占的大小
+ * DirectMemory：指Java NIO里的Direct-X-Buffer（例如DirectByteBuffer）所使用的native memory
+ * 
  * see: https://gist.github.com/rednaxelafx/1593521
  * see: https://www.zhihu.com/question/55033583
+ * 
+ * 目录下的 lib/sa-jdi.jar 来自jdk7，版本如下：
+ * java version "1.7.0_79"
+ * Java(TM) SE Runtime Environment (build 1.7.0_79-b15)
+ * Java HotSpot(TM) 64-Bit Server VM (build 24.79-b02, mixed mode)
+ * 
  * @author rednaxelafx
  *
  */
