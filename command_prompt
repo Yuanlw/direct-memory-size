@@ -1,0 +1,16 @@
+$ java -version
+java version "1.6.0_30"
+Java(TM) SE Runtime Environment (build 1.6.0_30-b12)
+Java HotSpot(TM) 64-Bit Server VM (build 20.5-b03, mixed mode)
+$ javac -classpath $JAVA_HOME/lib/sa-jdi.jar DirectMemorySize.java 
+$ jps
+18486 GroovyStarter
+23135 Jps
+$ java -classpath .:$JAVA_HOME/lib/sa-jdi.jar DirectMemorySize `pgrep java`
+Attaching to process ID 18486, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 20.5-b03
+NIO direct memory: (in bytes)
+  reserved size = 0.000000 MB (0 bytes)
+  max size      = 4069.000000 MB (4266655744 bytes)

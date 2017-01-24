@@ -1,0 +1,9 @@
+[sajia@xxx164 gist]$ sudo -u admin java -cp .:$JAVA_HOME/lib/sa-jdi.jar DirectMemorySize -e `pgrep -u admin java` | grep -v 'Finding object'
+Attaching to process ID 2499, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 20.0-b12-internal
+NIO direct memory: (in bytes)
+  reserved size = 907.541405 MB (951626136 bytes)
+  max size      = 3925.375000 MB (4116054016 bytes)
+NIO direct memory malloc'd size: 910.697655 MB (954935704 bytes)

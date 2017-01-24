@@ -1,0 +1,77 @@
+[sajia@211 temp]$ java -cp .:$JAVA_HOME/lib/sa-jdi.jar DirectMemorySize     
+Usage: java directMemorySize [option] <pid>
+                (to connect to a live java process)
+   or java directMemorySize [option] <executable> <core>
+                (to connect to a core file)
+   or java directMemorySize [option] [server_id@]<remote server IP or hostname>
+                (to connect to a remote debug server)
+
+where option must be one of:
+    -e  to print the actual size malloc'd
+    -v  to print verbose info of every live DirectByteBuffer allocated from Java
+    -h | -help  to print this help message
+[sajia@211 temp]$ java -cp .:$JAVA_HOME/lib/sa-jdi.jar DirectMemorySize `pgrep -u sajia java`
+Attaching to process ID 7381, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 20.5-b03
+NIO direct memory: (in bytes)
+  reserved size = 0.000003 MB (3 bytes)
+  max size      = 7152.000000 MB (7499415552 bytes)
+[sajia@211 temp]$ java -cp .:$JAVA_HOME/lib/sa-jdi.jar DirectMemorySize -e `pgrep -u sajia java`
+Attaching to process ID 7381, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 20.5-b03
+NIO direct memory: (in bytes)
+  reserved size = 0.000003 MB (3 bytes)
+  max size      = 7152.000000 MB (7499415552 bytes)
+Finding object size using Printezis bits and skipping over...
+Finding object size using Printezis bits and skipping over...
+NIO direct memory malloc'd size: 0.007815 MB (8195 bytes)
+[sajia@211 temp]$ time java -cp .:$JAVA_HOME/lib/sa-jdi.jar DirectMemorySize `pgrep -u sajia java`      
+Attaching to process ID 7381, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 20.5-b03
+NIO direct memory: (in bytes)
+  reserved size = 0.000003 MB (3 bytes)
+  max size      = 7152.000000 MB (7499415552 bytes)
+
+real    0m0.401s
+user    0m0.503s
+sys     0m0.057s
+[sajia@211 temp]$ time java -cp .:$JAVA_HOME/lib/sa-jdi.jar DirectMemorySize -e `pgrep -u sajia java`
+Attaching to process ID 7381, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 20.5-b03
+NIO direct memory: (in bytes)
+  reserved size = 0.000003 MB (3 bytes)
+  max size      = 7152.000000 MB (7499415552 bytes)
+Finding object size using Printezis bits and skipping over...
+Finding object size using Printezis bits and skipping over...
+NIO direct memory malloc'd size: 0.007815 MB (8195 bytes)
+
+real    0m4.822s
+user    0m2.095s
+sys     0m3.216s
+[sajia@211 temp]$ time java -cp .:$JAVA_HOME/lib/sa-jdi.jar DirectMemorySize -e -v `pgrep -u sajia java`
+Attaching to process ID 7381, please wait...
+Debugger attached successfully.
+Server compiler detected.
+JVM version is 20.5-b03
+NIO direct memory: (in bytes)
+  reserved size = 0.000003 MB (3 bytes)
+  max size      = 7152.000000 MB (7499415552 bytes)
+Currently allocated direct buffers:
+  0x00002aaab021df10: capacity = 0.000001 MB (1 bytes), mallocSize = 0.003907 MB (4097 bytes)
+  0x00002aaab0843310: capacity = 0.000002 MB (2 bytes), mallocSize = 0.003908 MB (4098 bytes)
+Finding object size using Printezis bits and skipping over...
+Finding object size using Printezis bits and skipping over...
+NIO direct memory malloc'd size: 0.007815 MB (8195 bytes)
+
+real    0m5.097s
+user    0m2.164s
+sys     0m3.426s
+[sajia@211 temp]$ 
