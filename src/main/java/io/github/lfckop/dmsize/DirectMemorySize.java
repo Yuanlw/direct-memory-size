@@ -13,6 +13,12 @@ import sun.jvm.hotspot.runtime.VM;
 import sun.jvm.hotspot.tools.Tool;
 import sun.jvm.hotspot.utilities.SystemDictionaryHelper;
 
+/**
+ * see: https://gist.github.com/rednaxelafx/1593521
+ * see: https://www.zhihu.com/question/55033583
+ * @author rednaxelafx
+ *
+ */
 public class DirectMemorySize extends Tool {
     private boolean exactMallocMode;
     private boolean verbose;
