@@ -14,6 +14,9 @@ import sun.jvm.hotspot.tools.Tool;
 import sun.jvm.hotspot.utilities.SystemDictionaryHelper;
 
 /**
+ * An Serviceability-Agent based tool to see stats of NIO direct memory, 
+ * as an alternative without JMX support for direct memory monitoring.
+ * 
  * 计算一个Java进程的DirectMemory所占的大小
  * DirectMemory：指Java NIO里的Direct-X-Buffer（例如DirectByteBuffer）所使用的native memory
  * 
